@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2018 NVIDIA Corporation 
+Author: Bryce Adelstein Lelbach <brycelelbach@gmail.com>
+
+Distributed under the Boost Software License v1.0 (boost.org/LICENSE_1_0.txt)
+-->
 <pre class='metadata'>
 Title: `namespace std { namespace fs = filesystem; }`
 H1: <code>namespace std { namespace fs = filesystem; }</code>
@@ -8,8 +14,7 @@ Group: WG21
 Audience: LEWG, LWG, SG3
 URL: https://wg21.link/P1005R1
 !Source: <a href="https://github.com/brycelelbach/wg21_p1005_fs_alias/blob/master/fs_alias.bs">github.com/brycelelbach/wg21_p1005_fs_alias/blob/master/fs_alias.bs</a>
-Issue Tracking: GitHub https://github.com/brycelelbach/wg21_p1005_fs_alias
-Date: 2018-07-04
+Issue Tracking: GitHub https://github.com/brycelelbach/wg21_p1005_fs_alias/issues
 Editor: Bryce Adelstein Lelbach, NVIDIA, brycelelbach@gmail.com
 Editor: Davis Herring, Los Alamos National Laboratory, herring@lanl.gov
 Markup Shorthands: markdown yes
@@ -17,6 +22,70 @@ No Abstract: yes
 Toggle Diffs: no
 Boilerplate: style-syntax-highlighting off
 </pre>
+
+<style>
+pre {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.ins, ins, ins *, span.ins, span.ins * {
+  background-color: rgb(200, 250, 200);
+  color: rgb(0, 136, 0);
+  text-decoration: none;
+}
+.del, del, del *, span.del, span.del * {
+  background-color: rgb(250, 200, 200);
+  color: rgb(255, 0, 0);
+  text-decoration: line-through;
+  text-decoration-color: rgb(255, 0, 0);
+}
+math, span.math {
+  font-family: serif;
+  font-style: italic;
+}
+ul {
+  list-style-type: "— ";
+}
+blockquote {
+  counter-reset: paragraph;
+}
+div.numbered, div.newnumbered {
+  margin-left: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+div.numbered:before, div.newnumbered:before {
+  position: absolute;
+  margin-left: -2em;
+  display-style: block;
+}
+div.numbered:before {
+  content: counter(paragraph);
+  counter-increment: paragraph;
+}
+div.newnumbered:before {
+  content: "�";
+}
+div.numbered ul, div.newnumbered {
+  counter-reset: list_item;
+}
+div.numbered li, div.newnumbered {
+  margin-left: 3em;
+}
+div.numbered li:before, div.newnumbered li:before {
+  position: absolute;
+  margin-left: -4.8em;
+  display-style: block;
+}
+div.numbered li:before {
+  content: "(" counter(paragraph) "." counter(list_item) ")";
+  counter-increment: list_item;
+}
+div.newnumbered li:before {
+  content: "(�." counter(list_item) ")";
+  counter-increment: list_item;
+}
+</style>
 
 The filesystem library lives in `std::filesystem`. This makes usage verbose and ergonomically challenging.
 
@@ -26,13 +95,15 @@ It is common practice for people to introduce the namespace alias `namespace fs 
 
 [Boost Filesystem's tutorial and examples](http://www.boost.org/doc/libs/1_68_0/libs/filesystem/doc/tutorial.html) use `namespace fs = boost::filesystem;`.
 
-Let's standardize this existing practice.
+Let's standardize this.
 
-# Wording # {#wording}
+**Wording:** Add the following to the header synopsis for `<filesystem>` in <a href="http://eel.is/c++draft/fs.filesystem.syn">[**fs.filesystem.syn**]</a>:
 
-Add the following to the header synopsis for `<filesystem>` in 27.11.5 [**fs.filesystem.syn**]:
-
+<blockquote>
+<div class="ins">
 ```
 namespace std { namespace fs = filesystem; }
 ```
+</div>
+</blockquote>
 
