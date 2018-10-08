@@ -1,0 +1,38 @@
+<pre class='metadata'>
+Title: `namespace std { namespace fs = filesystem; }`
+H1: <code>namespace std { namespace fs = filesystem; }</code>
+Shortname: P1005
+Revision: 1
+Status: P
+Group: WG21
+Audience: LEWG, LWG, SG3
+URL: https://wg21.link/P1005R1
+!Source: <a href="https://github.com/brycelelbach/wg21_p1005_fs_alias/blob/master/fs_alias.bs">github.com/brycelelbach/wg21_p1005_fs_alias/blob/master/fs_alias.bs</a>
+Issue Tracking: GitHub https://github.com/brycelelbach/wg21_p1005_fs_alias
+Date: 2018-07-04
+Editor: Bryce Adelstein Lelbach, NVIDIA, brycelelbach@gmail.com
+Editor: Davis Herring, Los Alamos National Laboratory, herring@lanl.gov
+Markup Shorthands: markdown yes
+No Abstract: yes
+Toggle Diffs: no
+Boilerplate: style-syntax-highlighting off
+</pre>
+
+The filesystem library lives in `std::filesystem`. This makes usage verbose and ergonomically challenging.
+
+It is common practice for people to introduce the namespace alias `namespace fs = std::filesystem;` when using the filesystem library to make usage more concise.
+
+[cppreference.com's examples](http://en.cppreference.com/w/cpp/experimental/fs/path/path) for the filesystem library use either `using namespace std::filesystem;` or `namespace fs = std::filesystem;`.
+
+[Boost Filesystem's tutorial and examples](http://www.boost.org/doc/libs/1_68_0/libs/filesystem/doc/tutorial.html) use `namespace fs = boost::filesystem;`.
+
+Let's standardize this existing practice.
+
+# Wording # {#wording}
+
+Add the following to the header synopsis for `<filesystem>` in 27.11.5 [**fs.filesystem.syn**]:
+
+```
+namespace std { namespace fs = filesystem; }
+```
+
